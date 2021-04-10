@@ -14,16 +14,20 @@ class AgenciesRepository {
   }
 
   create({ name, email, password }: IAgencyData): void {
-    const agencyObejct = {
+    const agencyObejct = new Agency();
+    Object.assign(agencyObejct, {
       name,
       email,
       password,
-    };
+      created_at: new Date(),
+    });
 
     this.agencies.push(agencyObejct);
   }
 
-  // list(): void {}
+  list(): Agency[] {
+    return this.agencies;
+  }
 
   // delete(): void {}
 }

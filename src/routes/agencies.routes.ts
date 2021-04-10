@@ -12,4 +12,10 @@ agenciesRoutes.post("/", (request, response) => {
   return response.json();
 });
 
+agenciesRoutes.get("/", (_request, response) => {
+  const agencies = agenciesRepository.list();
+
+  return response.json(agencies);
+});
+
 export { agenciesRoutes };

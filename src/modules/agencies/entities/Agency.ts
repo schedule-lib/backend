@@ -6,7 +6,7 @@ class Agency {
   email: string;
   password: string;
   professional?: boolean;
-  created_at?: Date;
+  created_at: Date;
 
   constructor() {
     if (!this.id) {

@@ -18,4 +18,11 @@ agenciesRoutes.get("/", (_request, response) => {
   return response.json(agencies);
 });
 
+agenciesRoutes.delete("/:agency_email", (request, response) => {
+  const { agency_email } = request.params;
+  const agencies = agenciesRepository.delete(agency_email);
+
+  return response.json(agencies);
+});
+
 export { agenciesRoutes };

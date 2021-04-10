@@ -1,12 +1,7 @@
 import { Agency } from "../../entities/Agency";
+import { IAgenciesRepository, IAgencyData } from "../IAgenciesRepository";
 
-interface IAgencyData {
-  name: string;
-  email: string;
-  password: string;
-}
-
-class AgenciesRepository {
+class AgenciesRepository implements IAgenciesRepository {
   agencies: Agency[];
 
   constructor() {
@@ -29,7 +24,18 @@ class AgenciesRepository {
     return this.agencies;
   }
 
-  // delete(): void {}
+  findAgencyPosition(email: string): number {
+    const agency = this.agencies.findIndex((agency) => agency.email === email);
+
+    return agency;
+  }
+
+  delete(email: string): Agency[] {
+    const agency = this.findAgencyPosition(email);
+    const deleted = this.agencies.splice(agency, 1);
+
+    return deleted;
+  }
 }
 
 export { AgenciesRepository };

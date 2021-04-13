@@ -12,7 +12,7 @@ adminsRoutes.post("/", (request, response) =>
 adminsRoutes.get("/", (request, response) =>
   listAdminsController.handle(request, response)
 );
-adminsRoutes.delete("/:email", (request, response) =>
+adminsRoutes.delete("/:emailToDelete", (request, response) =>
   deleteAdminController.handle(request, response)
 );
 

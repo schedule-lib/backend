@@ -6,8 +6,13 @@ class DeleteAdminController {
   constructor(private deleteAdminUseCase: DeleteAdminUseCase) {}
 
   handle(request: Request, response: Response): Response {
-    const { email } = request.params;
-    const admins = this.deleteAdminUseCase.execute(email);
+    const { emailToDelete } = request.params;
+    const { adminRequesting } = request.body;
+
+    const admins = this.deleteAdminUseCase.execute(
+      emailToDelete,
+      adminRequesting as string
+    );
 
     return response.json(admins);
   }

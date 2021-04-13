@@ -1,9 +1,15 @@
+import { inject, injectable } from "tsyringe";
+
 import { AppError } from "../../../../errors/AppError";
 import { Admin } from "../../entities/Admin";
 import { AdminsRepositories } from "../../repositories/implementations/AdminsRepositories";
 
+@injectable()
 class DeleteAdminUseCase {
-  constructor(private adminsRepositories: AdminsRepositories) {}
+  constructor(
+    @inject("AdminsRepositories")
+    private adminsRepositories: AdminsRepositories
+  ) {}
 
   execute(emailToDelete: string, adminRequesting: string): Admin[] {
     const isAdmin = this.adminsRepositories.fundByEmail(adminRequesting);

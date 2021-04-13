@@ -5,18 +5,8 @@ import { IAgenciesRepository } from "../IAgenciesRepository";
 class AgenciesRepository implements IAgenciesRepository {
   agencies: Agency[];
 
-  private static INSTANCE = new AgenciesRepository();
-
-  private constructor() {
+  constructor() {
     this.agencies = [];
-  }
-
-  public static getInstance(): AgenciesRepository {
-    if (!AgenciesRepository.INSTANCE) {
-      AgenciesRepository.INSTANCE = new AgenciesRepository();
-    }
-
-    return AgenciesRepository.INSTANCE;
   }
 
   create({ name, email, password }: ICreateAgencyDTO): void {

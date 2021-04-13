@@ -1,8 +1,14 @@
+import { inject, injectable } from "tsyringe";
+
 import { Admin } from "../../entities/Admin";
 import { AdminsRepositories } from "../../repositories/implementations/AdminsRepositories";
 
+@injectable()
 class ListAdminsUseCase {
-  constructor(private adminsRepositories: AdminsRepositories) {}
+  constructor(
+    @inject("AdminsRepositories")
+    private adminsRepositories: AdminsRepositories
+  ) {}
 
   execute(): Admin[] {
     return this.adminsRepositories.list();

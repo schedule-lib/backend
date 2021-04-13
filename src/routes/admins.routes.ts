@@ -1,19 +1,18 @@
 import { Router } from "express";
 
-import { createAdminController } from "../modules/admins/useCases/createAdmin";
-import { deleteAdminController } from "../modules/admins/useCases/deleteAdmin";
-import { listAdminsController } from "../modules/admins/useCases/listAdmins";
+import { CreateAdminController } from "../modules/admins/useCases/createAdmin/CreateAdminController";
+import { DeleteAdminController } from "../modules/admins/useCases/deleteAdmin/DeleteAdminController";
+import { ListAdminsController } from "../modules/admins/useCases/listAdmins/ListAdminsController";
 
 const adminsRoutes = Router();
 
-adminsRoutes.post("/", (request, response) =>
-  createAdminController.handle(request, response)
-);
-adminsRoutes.get("/", (request, response) =>
-  listAdminsController.handle(request, response)
-);
-adminsRoutes.delete("/:emailToDelete", (request, response) =>
-  deleteAdminController.handle(request, response)
-);
+const createAdminController = new CreateAdminController();
+adminsRoutes.post("/", createAdminController.handle);
+
+const listAdminsController = new ListAdminsController();
+adminsRoutes.get("/", listAdminsController.handle);
+
+const deleteAdminController = new DeleteAdminController();
+adminsRoutes.delete("/:emailToDelete", deleteAdminController.handle);
 
 export { adminsRoutes };

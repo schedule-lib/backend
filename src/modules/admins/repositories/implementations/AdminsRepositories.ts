@@ -5,17 +5,8 @@ import { IAdminsRepositories } from "../IAdminsRepositories";
 class AdminsRepositories implements IAdminsRepositories {
   admins: Admin[];
 
-  private constructor() {
+  constructor() {
     this.admins = [];
-  }
-
-  private static INSTANCE = new AdminsRepositories();
-  public static getInstance(): AdminsRepositories {
-    if (!AdminsRepositories.INSTANCE) {
-      AdminsRepositories.INSTANCE = new AdminsRepositories();
-    }
-
-    return AdminsRepositories.INSTANCE;
   }
 
   create({ name, email, password }: ICreateAdminDTO): void {

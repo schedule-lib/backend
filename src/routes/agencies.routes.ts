@@ -1,25 +1,17 @@
 import { Router } from "express";
 
-import { AgenciesRepository } from "../modules/agencies/repositories/implementations/AgenciesRepository";
-import { createAgencyController } from "../modules/agencies/useCases/createAgency";
-import { listAgenciesController } from "../modules/agencies/useCases/listAgencies";
+import { CreateAgencyController } from "../modules/agencies/useCases/createAgency/CreateAgencyController";
+import { ListAgenciesController } from "../modules/agencies/useCases/listAgencies/ListAgenciesController";
 
 const agenciesRoutes = Router();
 
-agenciesRoutes.post("/", (request, response) =>
-  createAgencyController.handle(request, response)
-);
+const createAgencyController = new CreateAgencyController();
+agenciesRoutes.post("/", createAgencyController.handle);
 
-agenciesRoutes.get("/", (request, response) =>
-  listAgenciesController.handle(request, response)
-);
+const listAgenciesController = new ListAgenciesController();
+agenciesRoutes.get("/", listAgenciesController.handle);
 
-const agenciesRepository = AgenciesRepository.getInstance();
-agenciesRoutes.delete("/:agency_email", (request, response) => {
-  const { agency_email } = request.params;
-  const agencies = agenciesRepository.delete(agency_email);
-
-  return response.json(agencies);
-});
+const deleteAgencyController = new CreateAgencyController();
+agenciesRoutes.delete("/:agency_email", deleteAgencyController.handle);
 
 export { agenciesRoutes };

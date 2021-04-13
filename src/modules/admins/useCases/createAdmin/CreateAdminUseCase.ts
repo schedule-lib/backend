@@ -1,8 +1,14 @@
-import { ICreateAdminDTO } from "../../dtos/ICreateAdminDTO";
-import { AdminsRepositories } from "../../repositories/implementations/AdminsRepositories";
+import { inject, injectable } from "tsyringe";
 
+import { ICreateAdminDTO } from "../../dtos/ICreateAdminDTO";
+import { IAdminsRepositories } from "../../repositories/IAdminsRepositories";
+
+@injectable()
 class CreateAdminUseCase {
-  constructor(private adminsRepositories: AdminsRepositories) {}
+  constructor(
+    @inject("AdminsRepositories")
+    private adminsRepositories: IAdminsRepositories
+  ) {}
 
   execute({ name, email, password }: ICreateAdminDTO): void {
     this.adminsRepositories.create({ name, email, password });

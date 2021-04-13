@@ -1,8 +1,7 @@
 import { ICreateAgencyDTO } from "../dtos/ICreateAgencyDTO";
 import { Agency } from "../entities/Agency";
-import { AgenciesRepository } from "./implementations/AgenciesRepository";
 
-export interface IAgenciesRepository {
+interface IAgenciesRepository {
   /**
    * will create a new agency member
    * @param name the name of the agency
@@ -31,3 +30,5 @@ export interface IAgenciesRepository {
    */
   delete(email: string): Agency[];
 }
+
+export { IAgenciesRepository };

@@ -1,10 +1,6 @@
+import { ICreateAgencyDTO } from "../dtos/ICreateAgencyDTO";
 import { Agency } from "../entities/Agency";
-
-export interface IAgencyData {
-  name: string;
-  email: string;
-  password: string;
-}
+import { AgenciesRepository } from "./implementations/AgenciesRepository";
 
 export interface IAgenciesRepository {
   /**
@@ -13,7 +9,7 @@ export interface IAgenciesRepository {
    * @param email the email/indentification of the agency
    * @param password the secrete word to loggin
    */
-  create({ name, email, password }: IAgencyData): void;
+  create({ name, email, password }: ICreateAgencyDTO): void;
 
   /**
    * will list all agencies created

@@ -1,14 +1,25 @@
+import { ICreateAgencyDTO } from "../../dtos/ICreateAgencyDTO";
 import { Agency } from "../../entities/Agency";
-import { IAgenciesRepository, IAgencyData } from "../IAgenciesRepository";
+import { IAgenciesRepository } from "../IAgenciesRepository";
 
 class AgenciesRepository implements IAgenciesRepository {
   agencies: Agency[];
 
-  constructor() {
+  private static INSTANCE = new AgenciesRepository();
+
+  private constructor() {
     this.agencies = [];
   }
 
-  create({ name, email, password }: IAgencyData): void {
+  public static getInstance(): AgenciesRepository {
+    if (!AgenciesRepository.INSTANCE) {
+      AgenciesRepository.INSTANCE = new AgenciesRepository();
+    }
+
+    return AgenciesRepository.INSTANCE;
+  }
+
+  create({ name, email, password }: ICreateAgencyDTO): void {
     const agencyObejct = new Agency();
     Object.assign(agencyObejct, {
       name,

@@ -6,6 +6,8 @@ import express, { NextFunction, Response, Request } from "express";
 import { AppError } from "./errors/AppError";
 import { routes } from "./routes";
 
+import "./shared/container";
+
 dotenv.config({});
 
 const app = express();

@@ -6,13 +6,13 @@ import { listAgenciesController } from "../modules/agencies/useCases/listAgencie
 
 const agenciesRoutes = Router();
 
-agenciesRoutes.post("/", (request, response) => {
-  createAgencyController.handle(request, response);
-});
+agenciesRoutes.post("/", (request, response) =>
+  createAgencyController.handle(request, response)
+);
 
-agenciesRoutes.get("/", (request, response) => {
-  listAgenciesController.handle(request, response);
-});
+agenciesRoutes.get("/", (request, response) =>
+  listAgenciesController.handle(request, response)
+);
 
 const agenciesRepository = AgenciesRepository.getInstance();
 agenciesRoutes.delete("/:agency_email", (request, response) => {

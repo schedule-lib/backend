@@ -1,8 +1,8 @@
-# VERSION: "3.9"
+VERSION: "3.9"
 
 services:
   database_schedule:
-    image: postgres
+    image: postgres:alpine
     container_name: database_schedule
     restart: always
     ports:

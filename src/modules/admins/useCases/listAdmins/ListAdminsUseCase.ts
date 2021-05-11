@@ -10,7 +10,7 @@ class ListAdminsUseCase {
     private adminsRepositories: AdminsRepositories
   ) {}
 
-  execute(): Admin[] {
+  async execute(): Promise<Admin[]> {
     return this.adminsRepositories.list();
   }
 }

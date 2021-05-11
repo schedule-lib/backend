@@ -1,5 +1,6 @@
 import { inject, injectable } from "tsyringe";
 
+import { AppError } from "../../../../errors/AppError";
 import { ICreateAdminDTO } from "../../dtos/ICreateAdminDTO";
 import { IAdminsRepositories } from "../../repositories/IAdminsRepositories";
 
@@ -10,8 +11,14 @@ class CreateAdminUseCase {
     private adminsRepositories: IAdminsRepositories
   ) {}
 
-  execute({ name, email, password }: ICreateAdminDTO): void {
-    this.adminsRepositories.create({ name, email, password });
+  async execute({ name, email, password }: ICreateAdminDTO): Promise<void> {
+    const adminAlreadyExists = await this.adminsRepositories.findByEmail(email);
+
+    if (adminAlreadyExists) {
+      throw new AppError("Admin already exists");
+    }
+
+    await this.adminsRepositories.create({ name, email, password });
   }
 }
 export { CreateAdminUseCase };

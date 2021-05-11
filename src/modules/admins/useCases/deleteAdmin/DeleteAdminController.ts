@@ -4,12 +4,12 @@ import { container } from "tsyringe";
 import { DeleteAdminUseCase } from "./DeleteAdminUseCase";
 
 class DeleteAdminController {
-  handle(request: Request, response: Response): Response {
+  async handle(request: Request, response: Response): Promise<Response> {
     const { emailToDelete } = request.params;
     const { adminRequesting } = request.body;
 
     const deleteAdminUseCase = container.resolve(DeleteAdminUseCase);
-    const admins = deleteAdminUseCase.execute(
+    const admins = await deleteAdminUseCase.execute(
       emailToDelete,
       adminRequesting as string
     );

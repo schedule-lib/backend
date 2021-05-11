@@ -22,11 +22,7 @@ class AdminsRepositories implements IAdminsRepositories {
   }
 
   async list(): Promise<Admin[]> {
-    return this.repository.find({
-      where: {
-        name: "elias",
-      },
-    });
+    return this.repository.find();
   }
 
   async findByEmail(email: string): Promise<Admin> {
@@ -46,7 +42,7 @@ class AdminsRepositories implements IAdminsRepositories {
   }
 
   async delete(email: string): Promise<DeleteResult> {
-    const adminPosition = this.repository.delete(email);
+    const adminPosition = await this.repository.delete(email);
 
     return adminPosition;
   }

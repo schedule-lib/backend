@@ -8,27 +8,27 @@ interface IAgenciesRepository {
    * @param email the email/indentification of the agency
    * @param password the secrete word to loggin
    */
-  create({ name, email, password }: ICreateAgencyDTO): void;
+  create({ name, email, password }: ICreateAgencyDTO): Promise<void>;
 
   /**
    * will list all agencies created
    * @return list with all entities/agencies
    */
-  list(): Agency[];
+  list(): Promise<Agency[]>;
 
   /**
    * will return position of the agency in list
    * @param email the email/indentification of the agency
    * @return id of the agency
    */
-  findAgencyPosition(email: string): number;
+  findByEmail(email: string): Promise<Agency>;
 
   /**
    * will remove an agency in list
    * @param email the email/indentification of the agency
    * @return all data of entitie/agency removed
    */
-  delete(email: string): Agency[];
+  delete(email: string): Promise<void>;
 }
 
 export { IAgenciesRepository };

@@ -10,8 +10,8 @@ class CreateAgencyUseCase {
     private agenciesRepository: IAgenciesRepository
   ) {}
 
-  execute({ name, email, password }: ICreateAgencyDTO): void {
-    this.agenciesRepository.create({ name, email, password });
+  async execute({ name, email, password }: ICreateAgencyDTO): Promise<void> {
+    await this.agenciesRepository.create({ name, email, password });
   }
 }
 

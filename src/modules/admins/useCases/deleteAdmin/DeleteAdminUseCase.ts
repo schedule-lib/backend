@@ -1,7 +1,7 @@
 import { inject, injectable } from "tsyringe";
+import { DeleteResult } from "typeorm";
 
 import { AppError } from "../../../../errors/AppError";
-import { Admin } from "../../entities/Admin";
 import { AdminsRepositories } from "../../repositories/implementations/AdminsRepositories";
 
 @injectable()
@@ -11,8 +11,11 @@ class DeleteAdminUseCase {
     private adminsRepositories: AdminsRepositories
   ) {}
 
-  execute(emailToDelete: string, adminRequesting: string): Admin[] {
-    const isAdmin = this.adminsRepositories.fundByEmail(adminRequesting);
+  async execute(
+    emailToDelete: string,
+    adminRequesting: string
+  ): Promise<DeleteResult> {
+    const isAdmin = await this.adminsRepositories.findByEmail(adminRequesting);
     if (!isAdmin) {
       throw new AppError("Only admin can delete another admin!", 401);
     }

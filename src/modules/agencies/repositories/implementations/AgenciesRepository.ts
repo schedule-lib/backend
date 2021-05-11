@@ -1,41 +1,38 @@
+import { getRepository, Repository } from "typeorm";
+
 import { ICreateAgencyDTO } from "../../dtos/ICreateAgencyDTO";
 import { Agency } from "../../entities/Agency";
 import { IAgenciesRepository } from "../IAgenciesRepository";
 
 class AgenciesRepository implements IAgenciesRepository {
-  agencies: Agency[];
+  private repository: Repository<Agency>;
 
   constructor() {
-    this.agencies = [];
+    this.repository = getRepository(Agency);
   }
 
-  create({ name, email, password }: ICreateAgencyDTO): void {
-    const agencyObejct = new Agency();
-    Object.assign(agencyObejct, {
-      name,
-      email,
-      password,
-      created_at: new Date(),
+  async create({ name, email, password }: ICreateAgencyDTO): Promise<void> {
+    const agency = this.repository.create({ name, email, password });
+
+    await this.repository.save(agency);
+  }
+
+  async list(): Promise<Agency[]> {
+    return this.repository.find();
+  }
+
+  async findByEmail(email: string): Promise<Agency> {
+    const agency = await this.repository.findOne({
+      where: {
+        email,
+      },
     });
-
-    this.agencies.push(agencyObejct);
-  }
-
-  list(): Agency[] {
-    return this.agencies;
-  }
-
-  findAgencyPosition(email: string): number {
-    const agency = this.agencies.findIndex((agency) => agency.email === email);
 
     return agency;
   }
 
-  delete(email: string): Agency[] {
-    const agency = this.findAgencyPosition(email);
-    const deleted = this.agencies.splice(agency, 1);
-
-    return deleted;
+  async delete(email: string): Promise<void> {
+    await this.repository.delete(email);
   }
 }
 

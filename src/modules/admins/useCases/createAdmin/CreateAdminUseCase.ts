@@ -1,3 +1,4 @@
+import { hash } from "bcrypt";
 import { inject, injectable } from "tsyringe";
 
 import { AppError } from "../../../../errors/AppError";
@@ -18,7 +19,13 @@ class CreateAdminUseCase {
       throw new AppError("Admin already exists");
     }
 
-    await this.adminsRepositories.create({ name, email, password });
+    const passwordHash = await hash(password, 8);
+
+    await this.adminsRepositories.create({
+      name,
+      email,
+      password: passwordHash,
+    });
   }
 }
 export { CreateAdminUseCase };

@@ -10,7 +10,7 @@ class ListAgenciesUseCase {
     private agenciesRepository: IAgenciesRepository
   ) {}
 
-  execute(): Agency[] {
+  async execute(): Promise<Agency[]> {
     return this.agenciesRepository.list();
   }
 }

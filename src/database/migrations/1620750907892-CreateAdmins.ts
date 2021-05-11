@@ -18,12 +18,12 @@ export class CreateAdmins1620750907892 implements MigrationInterface {
           },
           {
             name: "email",
-            type: "string",
+            type: "varchar",
             isUnique: true,
           },
           {
             name: "password",
-            type: "string",
+            type: "varchar",
           },
           {
             name: "created_at",

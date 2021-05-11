@@ -1,39 +1,54 @@
+import { DeleteResult, getRepository, Repository } from "typeorm";
+
 import { ICreateAdminDTO } from "../../dtos/ICreateAdminDTO";
 import { Admin } from "../../entities/Admin";
 import { IAdminsRepositories } from "../IAdminsRepositories";
 
 class AdminsRepositories implements IAdminsRepositories {
-  admins: Admin[];
+  private repository: Repository<Admin>;
 
   constructor() {
-    this.admins = [];
+    this.repository = getRepository(Admin);
   }
 
-  create({ name, email, password }: ICreateAdminDTO): void {
-    const adminObject = new Admin();
-    Object.assign(adminObject, {
+  async create({ name, email, password }: ICreateAdminDTO): Promise<void> {
+    const admin = this.repository.create({
       name,
       email,
       password,
-      created_at: new Date(),
     });
 
-    this.admins.push(adminObject);
+    await this.repository.save(admin);
   }
-  list(): Admin[] {
-    return this.admins;
+
+  async list(): Promise<Admin[]> {
+    return this.repository.find({
+      where: {
+        name: "elias",
+      },
+    });
   }
-  fundByEmail(email: string): Admin {
-    const admin = this.admins.find((admin) => admin.email === email);
-    return admin;
-  }
-  delete(email: string): Admin[] {
-    const adminPosition = this.admins.findIndex(
-      (admin) => admin.email === email
-    );
-    const admin = this.admins.splice(adminPosition, 1);
+
+  async findByEmail(email: string): Promise<Admin> {
+    const admin = await this.repository.findOne({
+      where: {
+        email,
+      },
+    });
 
     return admin;
+  }
+
+  async findById(id: string): Promise<Admin> {
+    const admin = await this.repository.findOne(id);
+
+    return admin;
+  }
+
+  async delete(email: string): Promise<DeleteResult> {
+    const adminPosition = this.repository.delete(email);
+
+    return adminPosition;
   }
 }
 

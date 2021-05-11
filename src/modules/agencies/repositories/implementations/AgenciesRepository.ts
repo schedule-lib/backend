@@ -30,6 +30,15 @@ class AgenciesRepository implements IAgenciesRepository {
 
     return agency;
   }
+  async findById(id: string): Promise<Agency> {
+    const agency = await this.repository.findOne({
+      where: {
+        id,
+      },
+    });
+
+    return agency;
+  }
 
   async delete(email: string): Promise<void> {
     await this.repository.delete(email);

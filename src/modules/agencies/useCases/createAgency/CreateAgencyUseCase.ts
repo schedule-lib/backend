@@ -1,5 +1,7 @@
+import { hash } from "bcrypt";
 import { injectable, inject } from "tsyringe";
 
+import { AppError } from "../../../../errors/AppError";
 import { ICreateAgencyDTO } from "../../dtos/ICreateAgencyDTO";
 import { IAgenciesRepository } from "../../repositories/IAgenciesRepository";
 
@@ -11,7 +13,21 @@ class CreateAgencyUseCase {
   ) {}
 
   async execute({ name, email, password }: ICreateAgencyDTO): Promise<void> {
-    await this.agenciesRepository.create({ name, email, password });
+    const agencyAlreadyExists = await this.agenciesRepository.findByEmail(
+      email
+    );
+
+    if (agencyAlreadyExists) {
+      throw new AppError("Agency already exists");
+    }
+
+    const passwordHash = await hash(password, 8);
+
+    await this.agenciesRepository.create({
+      name,
+      email,
+      password: passwordHash,
+    });
   }
 }
 

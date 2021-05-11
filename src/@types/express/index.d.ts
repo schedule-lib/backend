@@ -5,5 +5,8 @@ declare namespace Express {
     admin: {
       id: string;
     };
+    agency: {
+      id: string;
+    };
   }
 }

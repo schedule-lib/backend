@@ -22,6 +22,7 @@ interface IAgenciesRepository {
    * @return id of the agency
    */
   findByEmail(email: string): Promise<Agency>;
+  findById(id: string): Promise<Agency>;
 
   /**
    * will remove an agency in list

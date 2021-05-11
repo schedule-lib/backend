@@ -2,9 +2,10 @@ import { ICreateServiceDTO } from "../dtos/ICreateServiceDTO";
 import { Service } from "../entities/Service";
 
 interface IServicesRepository {
-  create({ name }: ICreateServiceDTO): Promise<void>;
+  create(data: ICreateServiceDTO): Promise<void>;
   list(): Promise<Service[]>;
   findById(id: string): Promise<Service>;
+  findByName(name: string): Promise<Service>;
   delete(id: string): Promise<void>;
 }
 

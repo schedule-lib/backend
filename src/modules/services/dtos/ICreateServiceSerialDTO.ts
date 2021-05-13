@@ -1,6 +1,6 @@
 type address = {
   province: string;
-  type: string;
+  point: string;
   id: string;
 };
 
@@ -9,7 +9,7 @@ type field = {
   type: string;
 };
 
-interface ICreateServiceSerialDTO {
+interface IServiceSerialDTO {
   name: string;
   fields_to_fill: field[];
   addresses: address[];
@@ -19,4 +19,4 @@ interface ICreateServiceSerialDTO {
   on_weekends: boolean;
   agency_owner: string;
 }
-export { ICreateServiceSerialDTO };
+export { IServiceSerialDTO };

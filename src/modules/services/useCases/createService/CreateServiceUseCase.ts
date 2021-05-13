@@ -10,19 +10,10 @@ import { AppError } from "../../../../errors/AppError";
 class CreateServiceUseCase {
   constructor(
     @inject("ServicesRepository")
-    private servicesRepository: IServicesRepository,
-    @inject("AgenciesRepository")
-    private agenciesRepository: IAgenciesRepository
+    private servicesRepository: IServicesRepository
   ) {}
 
   async execute(data: ICreateServiceDTO): Promise<void> {
-    const agencyAlreadyExists = await this.agenciesRepository.findByEmail(
-      data.agency_owner
-    );
-    if (!agencyAlreadyExists) {
-      throw new AppError("Agency do not found");
-    }
-
     await this.servicesRepository.create({
       name: data.name,
       agency_owner: data.agency_owner,

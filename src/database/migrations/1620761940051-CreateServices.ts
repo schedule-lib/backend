@@ -24,8 +24,8 @@ export class CreateServices1620761940051 implements MigrationInterface {
           },
 
           {
-            name: "fields_to_fill",
-            type: "text",
+            name: "required_field",
+            type: "varchar",
           },
 
           {

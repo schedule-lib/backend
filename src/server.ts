@@ -35,5 +35,5 @@ app.use(
 );
 
 app.listen(process.env.PORT || 3333, () =>
-  console.log(`SERVER IS RUNNING IN PORT = ${3333}`)
+  console.log(`SERVER IS RUNNING ON PORT = ${3333}`)
 );

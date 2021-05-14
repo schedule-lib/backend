@@ -26,7 +26,7 @@ class CreateServiceUseCase {
     await this.servicesRepository.create({
       name: data.name,
       agency_owner: data.agency_owner,
-      fields_to_fill: data.fields_to_fill,
+      required_field: data.required_field,
       addresses: data.addresses,
       months: data.months,
       start_hours: data.start_hours,

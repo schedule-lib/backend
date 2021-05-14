@@ -7,11 +7,12 @@ type address = {
 type field = {
   label: string;
   type: string;
+  document: string;
 };
 
 interface IServiceSerialDTO {
   name: string;
-  fields_to_fill: field[];
+  required_field: field;
   addresses: address[];
   months: string[];
   start_hours: string;

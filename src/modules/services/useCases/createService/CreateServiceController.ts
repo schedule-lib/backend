@@ -13,7 +13,7 @@ class CreateServiceController {
       addresses,
       agency_owner,
       end_hours,
-      fields_to_fill,
+      required_field,
       months,
       name,
       on_weekends,
@@ -22,7 +22,7 @@ class CreateServiceController {
 
     const serialized = {
       addresses: JSON.stringify(addresses),
-      fields_to_fill: JSON.stringify(fields_to_fill),
+      required_field: JSON.stringify(required_field),
       months: JSON.stringify(months),
       on_weekends: !!on_weekends,
     };
@@ -31,7 +31,7 @@ class CreateServiceController {
       addresses: serialized.addresses,
       agency_owner,
       end_hours,
-      fields_to_fill: serialized.fields_to_fill,
+      required_field: serialized.required_field,
       months: serialized.months,
       name,
       on_weekends: serialized.on_weekends,

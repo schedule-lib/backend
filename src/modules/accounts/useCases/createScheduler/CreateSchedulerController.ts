@@ -15,6 +15,7 @@ class CreateSchedulerController {
       province,
       service,
       username,
+      date,
     } = request.body;
 
     await createSchedulerUseCase.execute({
@@ -25,6 +26,7 @@ class CreateSchedulerController {
       province,
       service,
       username,
+      date,
     });
 
     return response.status(201).json();

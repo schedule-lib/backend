@@ -8,6 +8,7 @@ export type createScheduledDTO = {
   point: string;
   phone_number: string;
   province: string;
+  date: string;
   hour: string;
   created_at?: string;
 };

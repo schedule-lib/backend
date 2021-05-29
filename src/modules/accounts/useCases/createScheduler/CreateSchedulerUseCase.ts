@@ -10,6 +10,7 @@ interface IRequest {
   phone_number: string;
   province: string;
   hour: string;
+  date: string;
 }
 
 @injectable()
@@ -27,6 +28,7 @@ class CreateSchedulerUseCase {
     province,
     service,
     username,
+    date,
   }: IRequest): Promise<void> {
     await this.scheduledRepository.create({
       code,
@@ -36,6 +38,7 @@ class CreateSchedulerUseCase {
       province,
       service,
       username,
+      date,
     });
   }
 }

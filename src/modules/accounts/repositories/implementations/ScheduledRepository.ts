@@ -22,6 +22,7 @@ class ScheduledRepository implements IScheduledRepository {
     phone_number,
     province,
     hour,
+    date,
   }: createScheduledDTO): Promise<void> {
     const schedule = this.repository.create({
       code,
@@ -31,6 +32,7 @@ class ScheduledRepository implements IScheduledRepository {
       phone_number,
       province,
       hour,
+      date,
     });
 
     await this.repository.save(schedule);

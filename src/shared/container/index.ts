@@ -1,5 +1,7 @@
 import { container } from "tsyringe";
 
+import { ScheduledRepository } from "@modules/accounts/repositories/implementations/ScheduledRepository";
+import { IScheduledRepository } from "@modules/accounts/repositories/IScheduledRepository";
 import { ServicesRepository } from "@modules/services/repositories/implementations/ServicesRepository";
 import { IServicesRepository } from "@modules/services/repositories/IServicesRepository";
 
@@ -19,4 +21,8 @@ container.registerSingleton<IAdminsRepositories>(
 container.registerSingleton<IServicesRepository>(
   "ServicesRepository",
   ServicesRepository
+);
+container.registerSingleton<IScheduledRepository>(
+  "ScheduledRepository",
+  ScheduledRepository
 );

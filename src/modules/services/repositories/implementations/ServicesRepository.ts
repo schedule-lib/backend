@@ -16,7 +16,6 @@ class ServicesRepository implements IServicesRepository {
     const service = this.repository.create({
       name: data.name,
       agency_owner: data.agency_owner,
-      required_field: data.required_field,
       addresses: data.addresses,
       months: data.months,
       start_hours: data.start_hours,

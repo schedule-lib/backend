@@ -4,15 +4,8 @@ type address = {
   id: string;
 };
 
-type field = {
-  label: string;
-  type: string;
-  document: string;
-};
-
 interface IServiceSerialDTO {
   name: string;
-  required_field: field;
   addresses: address[];
   months: string[];
   start_hours: string;

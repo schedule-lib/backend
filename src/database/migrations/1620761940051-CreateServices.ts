@@ -24,11 +24,6 @@ export class CreateServices1620761940051 implements MigrationInterface {
           },
 
           {
-            name: "required_field",
-            type: "varchar",
-          },
-
-          {
             name: "addresses",
             type: "varchar",
           },

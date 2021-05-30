@@ -13,9 +13,6 @@ class Service {
   agency_owner: string;
 
   @Column()
-  required_field: string;
-
-  @Column()
   addresses: string;
 
   @Column()

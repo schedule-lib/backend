@@ -6,6 +6,7 @@ interface IServicesRepository {
   list(): Promise<Service[]>;
   findById(id: string): Promise<Service>;
   findByName(name: string): Promise<Service>;
+  findByAgency(agency: string): Promise<Service[]>;
   delete(id: string): Promise<void>;
 }
 

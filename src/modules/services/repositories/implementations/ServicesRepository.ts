@@ -36,6 +36,14 @@ class ServicesRepository implements IServicesRepository {
       where: { name },
     });
   }
+
+  async findByAgency(agency: string): Promise<Service[]> {
+    return this.repository.find({
+      where: {
+        agency_owner: agency,
+      },
+    });
+  }
   async delete(id: string): Promise<void> {
     await this.repository.delete(id);
   }

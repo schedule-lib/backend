@@ -12,5 +12,6 @@ interface IServiceSerialDTO {
   end_hours: string;
   on_weekends: boolean;
   agency_owner: string;
+  total_people: number;
 }
 export { IServiceSerialDTO };

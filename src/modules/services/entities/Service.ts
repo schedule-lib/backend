@@ -27,6 +27,12 @@ class Service {
   @Column()
   on_weekends: boolean;
 
+  @Column()
+  total_people: number;
+
+  @Column()
+  schedule: string;
+
   @CreateDateColumn()
   created_at: Date;
 

@@ -4,10 +4,13 @@ import { container } from "tsyringe";
 import { IServiceSerialDTO } from "@modules/services/dtos/ICreateServiceSerialDTO";
 
 import { CreateServiceUseCase } from "./CreateServiceUseCase";
+import { useSchedule } from "./scheduleDTO";
 
 class CreateServiceController {
   async handle(request: Request, response: Response): Promise<Response> {
     const createServiceUseCase = container.resolve(CreateServiceUseCase);
+
+    const schedule = useSchedule();
 
     const {
       addresses,
@@ -17,6 +20,7 @@ class CreateServiceController {
       name,
       on_weekends,
       start_hours,
+      total_people,
     } = request.body as IServiceSerialDTO;
 
     const serialized = {
@@ -33,6 +37,8 @@ class CreateServiceController {
       name,
       on_weekends: serialized.on_weekends,
       start_hours,
+      total_people,
+      schedule,
     });
 
     return response.status(201).json();

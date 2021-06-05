@@ -31,6 +31,8 @@ class CreateServiceUseCase {
       start_hours: data.start_hours,
       end_hours: data.end_hours,
       on_weekends: data.on_weekends,
+      total_people: data.total_people,
+      schedule: data.schedule,
     });
   }
 }

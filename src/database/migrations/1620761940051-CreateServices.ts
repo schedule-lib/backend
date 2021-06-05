@@ -50,6 +50,18 @@ export class CreateServices1620761940051 implements MigrationInterface {
           },
 
           {
+            name: "total_people",
+            type: "numeric",
+            default: 1,
+          },
+
+          {
+            name: "schedule",
+            type: "varchar",
+            default: null,
+          },
+
+          {
             name: "created_at",
             type: "timestamp",
             default: "now()",

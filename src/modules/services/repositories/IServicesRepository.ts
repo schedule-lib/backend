@@ -8,6 +8,7 @@ interface IServicesRepository {
   findByName(name: string): Promise<Service>;
   findByAgency(agency: string): Promise<Service[]>;
   delete(id: string): Promise<void>;
+  updatePeople(hourId: number): Promise<void>;
 }
 
 export { IServicesRepository };

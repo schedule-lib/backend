@@ -21,6 +21,8 @@ class ServicesRepository implements IServicesRepository {
       start_hours: data.start_hours,
       end_hours: data.end_hours,
       on_weekends: data.on_weekends,
+      total_people: data.total_people,
+      schedule: data.schedule,
     });
 
     await this.repository.save(service);
@@ -46,6 +48,10 @@ class ServicesRepository implements IServicesRepository {
   }
   async delete(id: string): Promise<void> {
     await this.repository.delete(id);
+  }
+
+  async updatePeople(id: number): Promise<void> {
+    await this.repository.findOne(id);
   }
 }
 

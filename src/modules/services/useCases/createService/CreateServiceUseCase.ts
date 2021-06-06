@@ -5,6 +5,7 @@ import { ICreateServiceDTO } from "@modules/services/dtos/ICreateServiceDTO";
 import { IServicesRepository } from "@modules/services/repositories/IServicesRepository";
 
 import { AppError } from "../../../../errors/AppError";
+import { useDays } from "./useMonths";
 
 @injectable()
 class CreateServiceUseCase {
@@ -23,6 +24,12 @@ class CreateServiceUseCase {
       throw new AppError("Agency do not found");
     }
 
+    const scheduled_today = {
+      today: `${new Date().getDate()}/${new Date().getMonth() + 1}`,
+      current: 0,
+    };
+    const date_months = JSON.stringify(useDays, null, 2);
+
     await this.servicesRepository.create({
       name: data.name,
       agency_owner: data.agency_owner,
@@ -33,6 +40,8 @@ class CreateServiceUseCase {
       on_weekends: data.on_weekends,
       total_people: data.total_people,
       schedule: data.schedule,
+      scheduled_today: JSON.stringify(scheduled_today, null, 2),
+      date_months,
     });
   }
 }

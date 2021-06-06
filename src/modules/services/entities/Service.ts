@@ -33,6 +33,12 @@ class Service {
   @Column()
   schedule: string;
 
+  @Column()
+  scheduled_today: string;
+
+  @Column()
+  date_months?: string;
+
   @CreateDateColumn()
   created_at: Date;
 

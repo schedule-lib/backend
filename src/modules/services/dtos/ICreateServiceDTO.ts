@@ -8,5 +8,7 @@ interface ICreateServiceDTO {
   on_weekends: boolean;
   total_people?: number;
   schedule?: string;
+  scheduled_today?: string;
+  date_months?: string;
 }
 export { ICreateServiceDTO };

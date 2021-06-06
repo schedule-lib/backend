@@ -23,6 +23,8 @@ class ServicesRepository implements IServicesRepository {
       on_weekends: data.on_weekends,
       total_people: data.total_people,
       schedule: data.schedule,
+      scheduled_today: data.scheduled_today,
+      date_months: data.date_months,
     });
 
     await this.repository.save(service);

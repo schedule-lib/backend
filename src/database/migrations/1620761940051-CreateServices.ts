@@ -58,7 +58,16 @@ export class CreateServices1620761940051 implements MigrationInterface {
           {
             name: "schedule",
             type: "varchar",
-            default: null,
+          },
+
+          {
+            name: "scheduled_today",
+            type: "varchar",
+          },
+
+          {
+            name: "date_months",
+            type: "text",
           },
 
           {

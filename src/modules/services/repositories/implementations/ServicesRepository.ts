@@ -14,6 +14,7 @@ class ServicesRepository implements IServicesRepository {
 
   async create(data: ICreateServiceDTO): Promise<void> {
     const service = this.repository.create({
+      id: data.id,
       name: data.name,
       agency_owner: data.agency_owner,
       addresses: data.addresses,

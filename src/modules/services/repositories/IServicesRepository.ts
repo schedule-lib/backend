@@ -9,6 +9,7 @@ interface IServicesRepository {
   findByAgency(agency: string): Promise<Service[]>;
   delete(id: string): Promise<void>;
   updatePeople(hourId: number): Promise<void>;
+  updateSchedule?(hour: string, service: string): Promise<void>;
 }
 
 export { IServicesRepository };

@@ -1,4 +1,5 @@
 interface ICreateServiceDTO {
+  id?: string;
   name: string;
   agency_owner: string;
   addresses: string;

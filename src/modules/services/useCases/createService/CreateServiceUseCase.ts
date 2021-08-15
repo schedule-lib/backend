@@ -5,7 +5,7 @@ import { ICreateServiceDTO } from "@modules/services/dtos/ICreateServiceDTO";
 import { IServicesRepository } from "@modules/services/repositories/IServicesRepository";
 
 import { AppError } from "../../../../errors/AppError";
-import { useDays } from "./useMonths";
+import { useDefaultMonths } from "./useMonths";
 
 @injectable()
 class CreateServiceUseCase {
@@ -24,24 +24,43 @@ class CreateServiceUseCase {
       throw new AppError("Agency do not found");
     }
 
-    const scheduled_today = {
-      today: `${new Date().getDate()}/${new Date().getMonth() + 1}`,
-      current: 0,
-    };
-    const date_months = JSON.stringify(useDays, null, 2);
+    const {
+      janeiro,
+      fevereiro,
+      marco,
+      abril,
+      maio,
+      junho,
+      julho,
+      agosto,
+      setembro,
+      outubro,
+      novembro,
+      dezembro,
+    } = useDefaultMonths();
 
     await this.servicesRepository.create({
       name: data.name,
       agency_owner: data.agency_owner,
       addresses: data.addresses,
       months: data.months,
-      start_hours: data.start_hours,
-      end_hours: data.end_hours,
-      on_weekends: data.on_weekends,
+      days: data.days,
+      start_hour: data.start_hour,
+      end_hour: data.end_hour,
       total_people: data.total_people,
-      schedule: data.schedule,
-      scheduled_today: JSON.stringify(scheduled_today, null, 2),
-      date_months,
+      scheduling_times: data.scheduling_times,
+      janeiro,
+      fevereiro,
+      marco,
+      abril,
+      maio,
+      junho,
+      julho,
+      agosto,
+      setembro,
+      outubro,
+      novembro,
+      dezembro,
     });
   }
 }

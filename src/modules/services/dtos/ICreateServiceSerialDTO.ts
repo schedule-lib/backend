@@ -6,12 +6,12 @@ type address = {
 
 interface IServiceSerialDTO {
   name: string;
+  agency_owner: string;
   addresses: address[];
   months: string[];
-  start_hours: string;
-  end_hours: string;
-  on_weekends: boolean;
-  agency_owner: string;
+  days: string[];
+  start_hour: string;
+  end_hour: string;
   total_people: number;
 }
 export { IServiceSerialDTO };

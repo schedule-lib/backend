@@ -61,51 +61,51 @@ export class CreateServices1620761940051 implements MigrationInterface {
 
           {
             name: "janeiro",
-            type: "varchar",
+            type: "text",
           },
           {
             name: "fevereiro",
-            type: "varchar",
+            type: "text",
           },
           {
             name: "marco",
-            type: "varchar",
+            type: "text",
           },
           {
             name: "abril",
-            type: "varchar",
+            type: "text",
           },
           {
             name: "maio",
-            type: "varchar",
+            type: "text",
           },
           {
             name: "junho",
-            type: "varchar",
+            type: "text",
           },
           {
             name: "julho",
-            type: "varchar",
+            type: "text",
           },
           {
             name: "agosto",
-            type: "varchar",
+            type: "text",
           },
           {
             name: "setembro",
-            type: "varchar",
+            type: "text",
           },
           {
             name: "outubro",
-            type: "varchar",
+            type: "text",
           },
           {
             name: "novembro",
-            type: "varchar",
+            type: "text",
           },
           {
             name: "dezembro",
-            type: "varchar",
+            type: "text",
           },
 
           {

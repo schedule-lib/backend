@@ -4,12 +4,23 @@ interface ICreateServiceDTO {
   agency_owner: string;
   addresses: string;
   months: string;
-  start_hours: string;
-  end_hours: string;
-  on_weekends: boolean;
+  days: string;
+  start_hour: string;
+  end_hour: string;
   total_people?: number;
-  schedule?: string;
-  scheduled_today?: string;
-  date_months?: string;
+  scheduling_times?: string;
+  // MONTHS
+  janeiro?: string;
+  fevereiro?: string;
+  marco?: string;
+  abril?: string;
+  maio?: string;
+  junho?: string;
+  julho?: string;
+  agosto?: string;
+  setembro?: string;
+  outubro?: string;
+  novembro?: string;
+  dezembro?: string;
 }
 export { ICreateServiceDTO };

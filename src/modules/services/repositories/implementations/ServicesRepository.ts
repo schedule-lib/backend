@@ -12,20 +12,44 @@ class ServicesRepository implements IServicesRepository {
     this.repository = getRepository(Service);
   }
 
-  async create(data: ICreateServiceDTO): Promise<void> {
+  async create({
+    janeiro,
+    fevereiro,
+    marco,
+    abril,
+    maio,
+    junho,
+    julho,
+    agosto,
+    setembro,
+    outubro,
+    novembro,
+    dezembro,
+    ...data
+  }: ICreateServiceDTO): Promise<void> {
     const service = this.repository.create({
       id: data.id,
       name: data.name,
       agency_owner: data.agency_owner,
       addresses: data.addresses,
       months: data.months,
-      start_hours: data.start_hours,
-      end_hours: data.end_hours,
-      on_weekends: data.on_weekends,
+      // days: data.days,
+      start_hour: data.start_hour,
+      end_hour: data.end_hour,
       total_people: data.total_people,
-      schedule: data.schedule,
-      scheduled_today: data.scheduled_today,
-      date_months: data.date_months,
+      scheduling_times: data.scheduling_times,
+      janeiro,
+      fevereiro,
+      marco,
+      abril,
+      maio,
+      junho,
+      julho,
+      agosto,
+      setembro,
+      outubro,
+      novembro,
+      dezembro,
     });
 
     await this.repository.save(service);

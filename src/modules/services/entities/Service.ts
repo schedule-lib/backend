@@ -19,25 +19,55 @@ class Service {
   months: string;
 
   @Column()
-  start_hours: string;
+  days: string;
 
   @Column()
-  end_hours: string;
+  start_hour: string;
 
   @Column()
-  on_weekends: boolean;
+  end_hour: string;
 
   @Column()
   total_people: number;
 
   @Column()
-  schedule: string;
+  scheduling_times: string;
 
   @Column()
-  scheduled_today: string;
+  janeiro: string;
 
   @Column()
-  date_months?: string;
+  fevereiro: string;
+
+  @Column()
+  marco: string;
+
+  @Column()
+  abril: string;
+
+  @Column()
+  maio: string;
+
+  @Column()
+  junho: string;
+
+  @Column()
+  julho: string;
+
+  @Column()
+  agosto: string;
+
+  @Column()
+  setembro: string;
+
+  @Column()
+  outubro: string;
+
+  @Column()
+  novembro: string;
+
+  @Column()
+  dezembro: string;
 
   @CreateDateColumn()
   created_at: Date;

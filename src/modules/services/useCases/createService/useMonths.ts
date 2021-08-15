@@ -1,7 +1,7 @@
-const freeDays = {
+const defaultMonths = {
   janeiro: [
     { day: 1, status: "available", click: 0 },
-    { day: 2, status: "available" },
+    { day: 2, status: "available", click: 0 },
     { day: 3, status: "available", click: 0 },
     { day: 4, status: "available", click: 0 },
     { day: 5, status: "available", click: 0 },
@@ -33,7 +33,7 @@ const freeDays = {
   ],
   fevereiro: [
     { day: 1, status: "available", click: 0 },
-    { day: 2, status: "available" },
+    { day: 2, status: "available", click: 0 },
     { day: 3, status: "available", click: 0 },
     { day: 4, status: "available", click: 0 },
     { day: 5, status: "available", click: 0 },
@@ -65,7 +65,7 @@ const freeDays = {
   ],
   marco: [
     { day: 1, status: "available", click: 0 },
-    { day: 2, status: "available" },
+    { day: 2, status: "available", click: 0 },
     { day: 3, status: "available", click: 0 },
     { day: 4, status: "available", click: 0 },
     { day: 5, status: "available", click: 0 },
@@ -97,7 +97,7 @@ const freeDays = {
   ],
   abril: [
     { day: 1, status: "available", click: 0 },
-    { day: 2, status: "available" },
+    { day: 2, status: "available", click: 0 },
     { day: 3, status: "available", click: 0 },
     { day: 4, status: "available", click: 0 },
     { day: 5, status: "available", click: 0 },
@@ -129,7 +129,7 @@ const freeDays = {
   ],
   maio: [
     { day: 1, status: "available", click: 0 },
-    { day: 2, status: "available" },
+    { day: 2, status: "available", click: 0 },
     { day: 3, status: "available", click: 0 },
     { day: 4, status: "available", click: 0 },
     { day: 5, status: "available", click: 0 },
@@ -161,7 +161,7 @@ const freeDays = {
   ],
   junho: [
     { day: 1, status: "available", click: 0 },
-    { day: 2, status: "available" },
+    { day: 2, status: "available", click: 0 },
     { day: 3, status: "available", click: 0 },
     { day: 4, status: "available", click: 0 },
     { day: 5, status: "available", click: 0 },
@@ -193,7 +193,7 @@ const freeDays = {
   ],
   julho: [
     { day: 1, status: "available", click: 0 },
-    { day: 2, status: "available" },
+    { day: 2, status: "available", click: 0 },
     { day: 3, status: "available", click: 0 },
     { day: 4, status: "available", click: 0 },
     { day: 5, status: "available", click: 0 },
@@ -225,7 +225,7 @@ const freeDays = {
   ],
   agosto: [
     { day: 1, status: "available", click: 0 },
-    { day: 2, status: "available" },
+    { day: 2, status: "available", click: 0 },
     { day: 3, status: "available", click: 0 },
     { day: 4, status: "available", click: 0 },
     { day: 5, status: "available", click: 0 },
@@ -257,7 +257,7 @@ const freeDays = {
   ],
   setembro: [
     { day: 1, status: "available", click: 0 },
-    { day: 2, status: "available" },
+    { day: 2, status: "available", click: 0 },
     { day: 3, status: "available", click: 0 },
     { day: 4, status: "available", click: 0 },
     { day: 5, status: "available", click: 0 },
@@ -289,7 +289,7 @@ const freeDays = {
   ],
   outubro: [
     { day: 1, status: "available", click: 0 },
-    { day: 2, status: "available" },
+    { day: 2, status: "available", click: 0 },
     { day: 3, status: "available", click: 0 },
     { day: 4, status: "available", click: 0 },
     { day: 5, status: "available", click: 0 },
@@ -321,7 +321,7 @@ const freeDays = {
   ],
   novembro: [
     { day: 1, status: "available", click: 0 },
-    { day: 2, status: "available" },
+    { day: 2, status: "available", click: 0 },
     { day: 3, status: "available", click: 0 },
     { day: 4, status: "available", click: 0 },
     { day: 5, status: "available", click: 0 },
@@ -353,7 +353,7 @@ const freeDays = {
   ],
   dezembro: [
     { day: 1, status: "available", click: 0 },
-    { day: 2, status: "available" },
+    { day: 2, status: "available", click: 0 },
     { day: 3, status: "available", click: 0 },
     { day: 4, status: "available", click: 0 },
     { day: 5, status: "available", click: 0 },
@@ -385,4 +385,54 @@ const freeDays = {
   ],
 };
 
-export { freeDays as useDays };
+type defaultMonthsProps = {
+  janeiro: string;
+  fevereiro: string;
+  marco: string;
+  abril: string;
+  maio: string;
+  junho: string;
+  julho: string;
+  agosto: string;
+  setembro: string;
+  outubro: string;
+  novembro: string;
+  dezembro: string;
+};
+
+function useDefaultMonths(): defaultMonthsProps {
+  const monthValues = Object.values(defaultMonths); // [jan, fev, apr]
+  const serialized = monthValues.map((month) => JSON.stringify(month, null, 2));
+
+  const [
+    janeiro,
+    fevereiro,
+    marco,
+    abril,
+    maio,
+    junho,
+    julho,
+    agosto,
+    setembro,
+    outubro,
+    novembro,
+    dezembro,
+  ] = serialized;
+
+  return {
+    janeiro,
+    fevereiro,
+    marco,
+    abril,
+    maio,
+    junho,
+    julho,
+    agosto,
+    setembro,
+    outubro,
+    novembro,
+    dezembro,
+  };
+}
+
+export { useDefaultMonths };

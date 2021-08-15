@@ -10,35 +10,35 @@ class CreateServiceController {
   async handle(request: Request, response: Response): Promise<Response> {
     const createServiceUseCase = container.resolve(CreateServiceUseCase);
 
-    const schedule = useSchedule();
+    const scheduling_times = useSchedule();
 
     const {
-      addresses,
-      agency_owner,
-      end_hours,
-      months,
       name,
-      on_weekends,
-      start_hours,
+      agency_owner,
+      addresses,
+      months,
+      days,
+      start_hour,
+      end_hour,
       total_people,
     } = request.body as IServiceSerialDTO;
 
     const serialized = {
       addresses: JSON.stringify(addresses),
       months: JSON.stringify(months),
-      on_weekends: !!on_weekends,
+      days: JSON.stringify(days),
     };
 
     await createServiceUseCase.execute({
-      addresses: serialized.addresses,
-      agency_owner,
-      end_hours,
-      months: serialized.months,
       name,
-      on_weekends: serialized.on_weekends,
-      start_hours,
+      agency_owner,
+      addresses: serialized.addresses,
+      months: serialized.months,
+      days: serialized.days,
+      start_hour,
+      end_hour,
       total_people,
-      schedule,
+      scheduling_times,
     });
 
     return response.status(201).json();

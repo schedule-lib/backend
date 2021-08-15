@@ -12,7 +12,7 @@ export class CreateSchedyled1622321697806 implements MigrationInterface {
           { name: "service", type: "varchar" },
           { name: "username", type: "varchar" },
           { name: "phone_number", type: "varchar" },
-          { name: "cpf", type: "cpf" },
+          { name: "cpf", type: "varchar" },
           { name: "point", type: "varchar" },
           { name: "province", type: "varchar" },
           { name: "date", type: "varchar" },

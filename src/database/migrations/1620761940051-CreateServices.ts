@@ -34,19 +34,18 @@ export class CreateServices1620761940051 implements MigrationInterface {
           },
 
           {
-            name: "start_hours",
+            name: "days",
             type: "varchar",
           },
 
           {
-            name: "end_hours",
+            name: "start_hour",
             type: "varchar",
           },
 
           {
-            name: "on_weekends",
-            type: "boolean",
-            default: false,
+            name: "end_hour",
+            type: "varchar",
           },
 
           {
@@ -56,18 +55,57 @@ export class CreateServices1620761940051 implements MigrationInterface {
           },
 
           {
-            name: "schedule",
-            type: "varchar",
-          },
-
-          {
-            name: "scheduled_today",
-            type: "varchar",
-          },
-
-          {
-            name: "date_months",
+            name: "scheduling_times",
             type: "text",
+          },
+
+          {
+            name: "janeiro",
+            type: "varchar",
+          },
+          {
+            name: "fevereiro",
+            type: "varchar",
+          },
+          {
+            name: "marco",
+            type: "varchar",
+          },
+          {
+            name: "abril",
+            type: "varchar",
+          },
+          {
+            name: "maio",
+            type: "varchar",
+          },
+          {
+            name: "junho",
+            type: "varchar",
+          },
+          {
+            name: "julho",
+            type: "varchar",
+          },
+          {
+            name: "agosto",
+            type: "varchar",
+          },
+          {
+            name: "setembro",
+            type: "varchar",
+          },
+          {
+            name: "outubro",
+            type: "varchar",
+          },
+          {
+            name: "novembro",
+            type: "varchar",
+          },
+          {
+            name: "dezembro",
+            type: "varchar",
           },
 
           {

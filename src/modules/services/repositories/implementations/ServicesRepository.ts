@@ -85,17 +85,55 @@ class ServicesRepository implements IServicesRepository {
   }
 
   async findByName(name: string): Promise<Service> {
-    return this.repository.findOne({
-      where: { name },
+    const service = await this.repository.findOne({ name });
+
+    Object.assign(service, {
+      addresses: JSON.parse(service.addresses),
+      months: JSON.parse(service.months),
+      days: JSON.parse(service.days),
+      scheduling_times: JSON.parse(service.scheduling_times),
+      janeiro: JSON.parse(service.janeiro),
+      fevereiro: JSON.parse(service.fevereiro),
+      marco: JSON.parse(service.marco),
+      abril: JSON.parse(service.abril),
+      maio: JSON.parse(service.maio),
+      junho: JSON.parse(service.junho),
+      julho: JSON.parse(service.julho),
+      agosto: JSON.parse(service.agosto),
+      setembro: JSON.parse(service.setembro),
+      outubro: JSON.parse(service.outubro),
+      novembro: JSON.parse(service.novembro),
+      dezembro: JSON.parse(service.dezembro),
     });
+
+    return service;
   }
 
   async findByAgency(agency: string): Promise<Service[]> {
-    return this.repository.find({
-      where: {
-        agency_owner: agency,
-      },
-    });
+    const services = (await this.repository.find({ agency_owner: agency })).map(
+      (service) => {
+        return Object.assign(service, {
+          addresses: JSON.parse(service.addresses),
+          months: JSON.parse(service.months),
+          days: JSON.parse(service.days),
+          scheduling_times: JSON.parse(service.scheduling_times),
+          janeiro: JSON.parse(service.janeiro),
+          fevereiro: JSON.parse(service.fevereiro),
+          marco: JSON.parse(service.marco),
+          abril: JSON.parse(service.abril),
+          maio: JSON.parse(service.maio),
+          junho: JSON.parse(service.junho),
+          julho: JSON.parse(service.julho),
+          agosto: JSON.parse(service.agosto),
+          setembro: JSON.parse(service.setembro),
+          outubro: JSON.parse(service.outubro),
+          novembro: JSON.parse(service.novembro),
+          dezembro: JSON.parse(service.dezembro),
+        });
+      }
+    );
+
+    return services;
   }
 
   async delete(id: string): Promise<void> {
